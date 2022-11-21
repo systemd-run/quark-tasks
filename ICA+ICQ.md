@@ -93,49 +93,27 @@ $ NODE_URL=tcp://<your_node_host:port> bash validator_test_upload_contract.sh ne
 
 Записываем весь вывод (!)
 
-### Setting up the relayers
+### Установка релейеров
 
 #### IBC relayer
 
-See the [instruction](https://github.com/neutron-org/testnets/blob/main/quark/ibc-relayer/instruction.md).
+Смотрим [инструкцию](https://github.com/neutron-org/testnets/blob/main/quark/ibc-relayer/instruction.md).
 
-> Note: you should first start the relayer **without** specifying [the channel](https://github.com/neutron-org/testnets/blob/main/quark/ibc-relayer/config.toml#L163-L165) that the relayer will work with using the contract address from the previous step. You can add this config and restart the relayer **after** running the [testing script](https://github.com/neutron-org/neutron-contracts/blob/neutron_audit_oak_19_09_2022_fixes/validator_test.sh) (see below) to make `hermes` only relay packets that are produced by your test contract. See the [documentation](https://docs.neutron.org/neutron/interchain-txs/overview#relaying) for more information.
+> Примечание: сначала вы должны запустить ретранслятор **без** указания [канала](https://github.com/neutron-org/testnets/blob/main/quark/ibc-relayer/config.toml#L163-L165), с которым будет работать ретранслятор, используя адрес контракта из предыдущего шага. Вы можете добавить этот конфиг и перезапустить ретранслятор **после** выполнения [скрипта тестирования](https://github.com/neutron-org/neutron-contracts/blob/neutron_audit_oak_19_09_2022_fixes/validator_test.sh) (см. ниже), чтобы заставить `hermes` ретранслировать только пакеты, созданные вашим тестовым контрактом. Более подробную информацию смотрите в [документации](https://docs.neutron.org/neutron/interchain-txs/overview#relaying).
 
-> Note: you will need the `connection_id` on Neutron (`a_side`) from this step later.
+> Примечание: вам понадобится `connection_id` на Neutron (`a_side`) из этого шага позже.
 
-> Note: you will need the mnemonic of `ibc-relayer` key from the [keys generation](#generate-the-relayers-address-on-neutron-and-get-testnet-ntrn-tokens) step both for `NEUTRON_MNEMONIC` and `TARGET_CHAIN_MNEMONIC` parameters.
+> Примечание: вам понадобится мнемоника ключа `ibc-relayer` из шага [генерация ключей](#generate-the-relayers-address-on-neutron-and-get-testnet-ntrn-tokens) как для параметров `NEUTRON_MNEMONIC`, так и для `TARGET_CHAIN_MNEMONIC`.
 
-#### ICQ relayer setup 
+#### ICQ relayer
 
-See the [instruction](https://github.com/neutron-org/testnets/blob/main/quark/icq-relayer/README.md).
+См. [инструкцию](https://github.com/neutron-org/testnets/blob/main/quark/icq-relayer/README.md).
 
-> Note: don't forget to specify the contract address that the relayer will work with using the contract address from the [previous step](#uploading-the-test-contract). See the [documentation](https://docs.neutron.org/relaying/icq-relayer#relayer-application-settings) for more information. The configuration option you are looking for is `RELAYER_REGISTRY_ADDRESSES`.
+> Примечание: не забудьте указать адрес контракта, с которым будет работать ретранслятор, используя адрес контракта из [предыдущего шага](#uploading-the-test-contract). Дополнительную информацию см. в [документации](https://docs.neutron.org/relaying/icq-relayer#relayer-application-settings). Искомый параметр конфигурации - `RELAYER_REGISTRY_ADDRESSES`.
 
-> Note: you will need the mnemonic of `icq-relayer` key from the [keys generation](#generate-the-relayers-address-on-neutron-and-get-testnet-ntrn-tokens) step.
+> Примечание: вам понадобится мнемоника ключа `icq-relayer` из шага [генерация ключей](#generate-the-relayers-address-on-neutron-and-get-testnet-ntrn-tokens).
 
-## Test cases (informational)
 
-This section contains the desciption of the ICA and ICQ test cases. The *single* testing [script](https://github.com/neutron-org/neutron-contracts/blob/neutron_audit_oak_19_09_2022_fixes/validator_test.sh) goes through all the steps in both the ICA and ICQ test cases, which you can check by reading the script. 
-
-> **Note: this section simply provides you with the description of the tasks, no actions are required here. You will go through all the steps in the next section by running the test script.**
-
-### ICA
-
-1. Upload the testing contract [artifact](https://github.com/neutron-org/neutron-contracts/blob/neutron_audit_oak_19_09_2022_fixes/artifacts/neutron_validators_test.wasm),
-2. Execute an interchain transaction (send a [message](https://github.com/neutron-org/neutron-contracts/blob/0ba9a36c6d26166cc7051436ec21417031de1334/contracts/neutron_validator_test/src/msg.rs#L39-L45) to the contract) that should return a successful ACK, share the tx links,
-3. Execute an interchain transaction (send a [message](https://github.com/neutron-org/neutron-contracts/blob/0ba9a36c6d26166cc7051436ec21417031de1334/contracts/neutron_validator_test/src/msg.rs#L39-L45) to the contract) that should return an error ACK, share the tx links,
-4. Execute an interchain transaction (send a [message](https://github.com/neutron-org/neutron-contracts/blob/0ba9a36c6d26166cc7051436ec21417031de1334/contracts/neutron_validator_test/src/msg.rs#L39-L45) to the contract) that should return a successful ACK that will be processed by the contract with an error, share the tx links.
-
-> Note: when the ICA module executes an interchain transaction on the host chain, an IBC acknowledgement packet gets sent to the controller chain. This acknowledgement can either be a successful acknowledgement or an error acknowledgement. 
-
-### ICQ
-
-1. Upload the testing contract [artifact](https://github.com/neutron-org/neutron-contracts/blob/neutron_audit_oak_19_09_2022_fixes/artifacts/neutron_validators_test.wasm),
-2. Register a tx query (send a [message](https://github.com/neutron-org/neutron-contracts/blob/0ba9a36c6d26166cc7051436ec21417031de1334/contracts/neutron_validator_test/src/msg.rs#L66-L71) to the contract), and share tx hash,
-3. Register a kv query (send a [message](https://github.com/neutron-org/neutron-contracts/blob/0ba9a36c6d26166cc7051436ec21417031de1334/contracts/neutron_validator_test/src/msg.rs#L60-L65) to the contract), and share tx hash,
-4. Wait until the relayer submits the responses, share the txs in a Google form,
-5. Control contract address balance during query registration to register balance reduction for deposit (please read the [documentation](https://docs.neutron.org/neutron/interchain-queries/overview#query-creation-deposit) on deposits),
-6. Delete **the tx query** (send a [message](https://github.com/neutron-org/neutron-contracts/blob/0ba9a36c6d26166cc7051436ec21417031de1334/contracts/neutron_validator_test/src/msg.rs#L72-L74) to the contract) before the query submit timeout event, to collect the deposit to contract address.
 
 ## Running the tasks
 
