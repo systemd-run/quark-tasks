@@ -28,9 +28,9 @@ $ cd ~/
 $ mkdir ~/.hermes
 ```
 
-## 3. Созание сервиса
+## 3. Создание сервиса
 
-`vim /etc/systemd/system/neutron-ibc-cosmoshub-relayer.service`:
+`vim /etc/systemd/system/neutron-ibc-cosmoshub-relayer.service`
 
 ```
 [Unit]
@@ -49,7 +49,7 @@ WantedBy=multi-user.target
 
 Скопируйте пример [конфига](https://github.com/neutron-org/testnets/blob/main/quark/ibc-relayer/config.toml) в `~/.hermes/config.toml` **и заполните недостающие параметры.**
 
-Не забудьте заполнить недостающие параметры (отмечены комментариями TODO).
+> Не забудьте йопт, заполнить недостающие параметры (отмечены комментариями TODO).
 
 ПРИМЕЧАНИЕ: `websocket_addr` должен начинаться с протокола ws|wss
 
