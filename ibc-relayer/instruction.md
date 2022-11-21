@@ -1,10 +1,10 @@
-# Installation instructions for quark-1 testnet
+# Инструкция по установке quark-1 testnet
 
-> **Note: we assume that you've already initialized the test smart contract. You will need the contract address to put it in `config.toml` to make the relayer only work with packets coming from this contract.**
+> **Примечание: мы предполагаем, что вы уже инициализировали тестовый смарт-контракт. Вам понадобится адрес контракта, чтобы поместить его в `config.toml` для того, чтобы ретранслятор работал только с пакетами, приходящими от этого контракта.**
 
-This tutorial is for connecting with cosmoshub testnet network (theta-testnet-001). To connect hermes with juno, go through the same steps (from step 2) but change the user name and service name, and uncomment the chain config for juno in `config.toml`. This tutorial installs hermes as a daemon.
+Это руководство предназначено для подключения к сети cosmoshub testnet (theta-testnet-001). Чтобы подключить hermes с помощью juno, проделайте те же шаги (начиная с шага 2), но измените имя пользователя и имя сервиса, а также откомментируйте конфиг сети для juno в файле `config.toml`. В этом руководстве hermes устанавливается как демон.
 
-## 1. Install Hermes v1.0.0
+## 1. Установка Hermes v1.0.0
 
 ```
 curl -L "https://github.com/informalsystems/ibc-rs/releases/download/v1.0.0/hermes-v1.0.0-${PLATFORM}-unknown-linux-gnu.tar.gz" > hermes.tar.gz && \
@@ -15,11 +15,11 @@ curl -L "https://github.com/informalsystems/ibc-rs/releases/download/v1.0.0/herm
     sudo chown root /usr/local/bin/hermes
 ```
 
-Check that it works and version is ok (Should be `hermes 1.0.0+ed4dd8c`)
+Проверьте, что он работает и версия в порядке (Должна быть `hermes 1.0.0+ed4dd8c`)
 
 `$ hermes --version`
 
-## 2. Add user
+## 2. Добавление пользователя
 
 ```
 $ sudo useradd -m ibc-cosmoshub-rly
@@ -28,9 +28,9 @@ $ cd ~/
 $ mkdir ~/.hermes
 ```
 
-## 3. Create a systemd unit
+## 3. Созание сервиса
 
-Create file `/etc/systemd/system/neutron-ibc-cosmoshub-relayer.service` with content:
+`vim /etc/systemd/system/neutron-ibc-cosmoshub-relayer.service`:
 
 ```
 [Unit]
@@ -45,21 +45,21 @@ ExecStart=/usr/local/bin/hermes start
 WantedBy=multi-user.target
 ```
 
-## 4. Configure the relayer
+## 4. Настройка ретранслятора
 
-Copy the example [config](https://github.com/neutron-org/testnets/blob/main/quark/ibc-relayer/config.toml) into `~/.hermes/config.toml` **and fill the missing parameters.**
+Скопируйте пример [конфига](https://github.com/neutron-org/testnets/blob/main/quark/ibc-relayer/config.toml) в `~/.hermes/config.toml` **и заполните недостающие параметры.**
 
-Don't forget to fill in the missing parameters (marked by TODO comments).
+Не забудьте заполнить недостающие параметры (отмечены комментариями TODO).
 
-NOTE: `websocket_addr` must start with ws|wss protocol
+ПРИМЕЧАНИЕ: `websocket_addr` должен начинаться с протокола ws|wss
 
-Check that config is valid:
+Проверьте корректность конфигурации:
 
 `$ hermes health-check`
 
-## 5. Add keys to relayer
+## 5. Добавление ключей к ретранслятору
 
-Don't forget to generate your mnemonics for accounts and fill in in bash commands below:
+Не забудьте сгенерировать свои мнемоники для учетных записей и заполнить их в командах bash, приведенных ниже:
 
 ```
 $ sudo su ibc-cosmoshub-rly
@@ -71,33 +71,33 @@ $ hermes keys add --chain quark-1 --mnemonic-file <(echo "$NEUTRON_MNEMONIC") --
 $ hermes keys add --chain $TARGET_CHAIN_ID --mnemonic-file <(echo "$TARGET_CHAIN_MNEMONIC") --key-name $TARGET_KEY_NAME
 ```
 
-## 6. Check funds
+## 6. Проверка средств
 
-Make sure that the relayer keys provided on previous step have enough funds. You can find top up istructions [here](https://github.com/neutron-org/testnets/blob/main/quark/testcases/ICA+ICQ.md#getting-ready).
+Убедитесь, что на ключах ретранслятора, предоставленных на предыдущем шаге, достаточно средств. Вы можете найти инструкции по пополнению счета [здесь] (https://github.com/neutron-org/testnets/blob/main/quark/testcases/ICA+ICQ.md#getting-ready).
 
-## 7. Run the service
+## 7. Запуск сервиса
 
 Start it:
 
 `$ sudo systemctl start neutron-ibc-cosmoshub-relayer.service`
 
-Make it run on each boot:
+Запускайте его при каждой загрузке:
 
 `$ sudo systemctl enable neutron-ibc-cosmoshub-relayer.service`
 
-## 8. Make sure it's running okay
+## 8. Убедитесь, что все работает нормально
 
-Service status:
+Состояние сервиса:
 
 `$ sudo systemctl status neutron-ibc-cosmoshub-relayer.service`
 
-Logs:
+Логи:
 
 `$ journalctl --unit=neutron-ibc-cosmoshub-relayer`
 
-## 9. Create connection between chains
+## 9. Создаем соединение между чейнами
 
-For Cosmos hub:
+Для Cosmos hub:
 
 ```bash
 $ sudo su ibc-cosmoshub-rly
@@ -105,7 +105,7 @@ $ hermes create connection --a-chain quark-1 --b-chain theta-testnet-001
 $ exit
 ```
 
-For Juno:
+Для Juno:
 
 ```
 $ sudo su ibc-juno-rly
@@ -113,7 +113,7 @@ $ hermes create connection --a-chain quark-1 --b-chain uni-5
 $ exit
 ```
 
-You will see a lot of text, but you are only interested in the `connection_id` on Neutron at the end of the output:
+Вы увидите много текста, но вас интересует только `connection_id` на Neutron в конце вывода:
 
 ```
 SUCCESS Connection {
@@ -138,5 +138,5 @@ SUCCESS Connection {
 ```
 
 <aside>
-💡 Save the newly created neutron `connection_id` somewhere — is is required to run the testing script.
+💡 Сохраните где-нибудь только что созданный neutron `connection_id` - он необходим для запуска сценария тестирования.
 </aside>
