@@ -29,8 +29,8 @@
 **Адреса, сгенерированные в этом разделе будут использованы в конфигурации [Hermes](#ibc-relayer) и [ICQ Relayer](#icq-relayer-setup) в качестве адреса на чейне Neutron.**
 
 1. Генерируем ключи с помощью следующих команд:
-`neutrond keys add ibc-relayer`
-
+    `neutrond keys add ibc-relayer`
+    
     `neutrond keys add icq-relayer`
 
     и сохраняем мнемоники;
