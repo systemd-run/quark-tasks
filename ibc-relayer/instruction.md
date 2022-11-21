@@ -73,7 +73,7 @@ $ hermes keys add --chain $TARGET_CHAIN_ID --mnemonic-file <(echo "$TARGET_CHAIN
 
 ## 6. Проверка средств
 
-Убедитесь, что на ключах ретранслятора, предоставленных на предыдущем шаге, достаточно средств. Вы можете найти инструкции по пополнению счета [здесь] (https://github.com/neutron-org/testnets/blob/main/quark/testcases/ICA+ICQ.md#getting-ready).
+Убедитесь, что на ключах ретранслятора, предоставленных на предыдущем шаге, достаточно средств. Вы можете найти инструкции по пополнению счета [здесь](https://github.com/neutron-org/testnets/blob/main/quark/testcases/ICA+ICQ.md#getting-ready).
 
 ## 7. Запуск сервиса
 
