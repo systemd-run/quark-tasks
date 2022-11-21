@@ -29,7 +29,7 @@
 **Адреса, сгенерированные в этом разделе будут использованы в конфигурации [Hermes](#ibc-relayer) и [ICQ Relayer](#icq-relayer-setup) в качестве адреса на чейне Neutron.**
 
 1. Генерируем ключи с помощью следующих команд:
-    
+   
     `neutrond keys add ibc-relayer`
     
     `neutrond keys add icq-relayer`
@@ -85,6 +85,14 @@ $ NODE_URL=tcp://<your_node_host:port> bash validator_test_upload_contract.sh ne
 
 Ниже показан пример выполнения скрипта. Генерация адреса:
 
+![1](assets/Screenshot 2022-11-21 221106.png)
+
+После генерации получаем токены на сгенерированный адрес через фасет, проверяем баланс в експлорере, и нажимаем enter:
+
+![2](assets/Screenshot 2022-11-21 222155.png)
+
+Записываем весь вывод (!)
+
 ### Setting up the relayers
 
 #### IBC relayer
@@ -135,7 +143,7 @@ This section contains the desciption of the ICA and ICQ test cases. The *single*
 
 1. Upload the [testing script](https://github.com/neutron-org/neutron-contracts/blob/neutron_audit_oak_19_09_2022_fixes/validator_test.sh) to your node,
 2. Run this script on your server (`YOUR_CONNECTION_ID` is the connection identifier (Neutron side) that you saved after running the IBC relayer): 
- 
+
 `NODE_URL=tcp://<your_node_host:port> bash validator_test.sh YOUR_CONNECTION_ID`
 
 
