@@ -85,11 +85,11 @@ $ NODE_URL=tcp://<your_node_host:port> bash validator_test_upload_contract.sh ne
 
 Ниже показан пример выполнения скрипта. Генерация адреса:
 
-![1](assets/Screenshot 2022-11-21 221106.png)
+![1](assets/1.png)
 
 После генерации получаем токены на сгенерированный адрес через фасет, проверяем баланс в експлорере, и нажимаем enter:
 
-![2](assets/Screenshot 2022-11-21 222155.png)
+![2](assets/2.png)
 
 Записываем весь вывод (!)
 
