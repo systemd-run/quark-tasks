@@ -49,7 +49,7 @@ WantedBy=multi-user.target
 
 Копируем пример [конфига](https://github.com/neutron-org/testnets/blob/main/quark/ibc-relayer/config.toml) в `~/.hermes/config.toml` **и заполняем недостающие параметры.**
 
-> Не забудьте йопт, заполнить недостающие параметры (отмечены комментариями TODO).
+> Не забудьте йопд, заполнить недостающие параметры (отмечены комментариями TODO).
 
 ПРИМЕЧАНИЕ: `websocket_addr` должен начинаться с протокола ws|wss
 
@@ -73,7 +73,7 @@ $ hermes keys add --chain $TARGET_CHAIN_ID --mnemonic-file <(echo "$TARGET_CHAIN
 
 ## 6. Чек баланса
 
-Убедитесь, что на ключах ретранслятора, предоставленных на предыдущем шаге, достаточно средств. Вы можете найти инструкции по пополнению счета [здесь](https://github.com/neutron-org/testnets/blob/main/quark/testcases/ICA+ICQ.md#getting-ready).
+Смотрим, что на ключах ретранслятора, предоставленных на предыдущем шаге, достаточно средств. Вы можете найти инструкции по пополнению счета [здесь](https://github.com/neutron-org/testnets/blob/main/quark/testcases/ICA+ICQ.md#getting-ready).
 
 ## 7. Запуск сервиса
 
