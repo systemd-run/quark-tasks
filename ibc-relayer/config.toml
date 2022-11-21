@@ -90,11 +90,11 @@ port = 3001
 # neutron quark-1 testnet
 [[chains]]
 id = 'quark-1'
-# TODO: Enter your node's public RPC ADDRESS (ip OR host)
+# TODO: паблик RPC вашей/чужой ноды (ip ИЛИ hostname)
 rpc_addr = TODO
-# TODO: Enter your node's public GRPC ADDRESS (ip OR host)
+# TODO: паблик GRPC вашей/чужой ноды (ip ИЛИ hostname)
 grpc_addr = TODO
-# TODO: Enter your node's public websocket ADDRESS (usually equals to ws://[rpc_addr]/websocket)
+# TODO: паблик websocket адрес ноды (обычно ws://[rpc_addr]/websocket)
 websocket_addr = TODO
 rpc_timeout = '10s'
 account_prefix = 'neutron'
