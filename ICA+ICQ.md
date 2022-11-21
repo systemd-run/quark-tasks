@@ -39,68 +39,51 @@
 2. Идем в [Faucet](http://faucet.quark.ntrn.info/) и получаем токены на сгенерированные выше адреса;
 3. Убеждаемся что транза прошла на Neutron testnet explorer: http://explorer.quark.ntrn.info/accounts/<your_relayer_address>.
 
-### Получаем тестовые токены на целевом чейне
+### Получаем тестовые токены на таргет чейне
 
-Testnet tokens are required for the operation of the IBC relayer. **You will specify the address used in this section in [Hermes](#ibc-relayer) configuration as the address on the target chain of your choice.**
+Токены Testnet необходимы для работы IBC-релея. **Вы укажете адрес, используемый в этом разделе в конфигурации [Hermes](#ibc-relayer), как адрес в таргет чейне по вашему выбору.**.
 
-> NOTE: the following guides on getting testnet tokens contain visiting the https://jsfiddle.net/. This resource might not be accessible from your location without VPN.
+> ВНИМАНИЕ: следующие руководства по получению токенов testnet содержат посещение сайта https://jsfiddle.net/. Этот ресурс может быть недоступен из вашего местоположения без VPN.
 
 #### Cosmos hub
 
-If you don't have `atom`s, then you can go through the following steps:
+Если у вас нет `atom`, то вы можете выполнить следующие шаги:
 
-- If you don't have Keplr [install it](https://www.keplr.app/);
-- If you don't have CosmosHub testnet in your Keplr, follow to the [Jsfiddle](https://jsfiddle.net/kht96uvo/1/), and a `theta-testnet-001` network will become available in Keplr;
-- For simplicity, you can re-use the mnemonic of `ibc-relayer` key (Keplr -> Add Account -> Import existing account);
-- Go to [Faucet](https://discord.com/channels/669268347736686612/953697793476821092) channel in Discord and get your `atom`s (make sure that you are added to the sever first: https://discord.gg/cosmosnetwork).
+- Если нет Keplr [ставим](https://www.keplr.app/);
+- Если отсутствует сеть CosmosHub testnet в Keplr, идем на [Jsfiddle](https://jsfiddle.net/kht96uvo/1/), и добавляем сеть `theta-testnet-001` в Keplr;
+- Для простоты, можно повторно использовать мнемонику от ключа `ibc-relayer` (Keplr -> Add Account -> Import existing account);
+- Идем в канал [Faucet](https://discord.com/channels/669268347736686612/953697793476821092) в Discord получаем `atom` (сначала добавляемся на сервер: https://discord.gg/cosmosnetwork).
 
 #### Juno
 
-You don't have `junox` you can go through the following steps:
+Если у вас нет `junox` то вы можете выполнить следующие шаги:
 
-- If you don't have Keplr, [install it](https://www.keplr.app/);
-- If you don't have Juno testnet in your Keplr, follow to the [Jsfiddle](https://jsfiddle.net/superatik/L6bys84z/1/), and a `uni-5` network will become available in Keplr;
-- For simplicity, you can re-use the mnemonic of `ibc-relayer` key (Keplr -> Add Account -> Import existing account);
-- Go to [Faucet](https://faucet.roguenet.io/) and get your `junox`.
+- Если нет Keplr [ставим](https://www.keplr.app/);
+- Если отсутствует сеть Juno testnet в Keplr, идем на [Jsfiddle](https://jsfiddle.net/superatik/L6bys84z/1/), и добавляем сеть `uni-5` в Keplr;
+- Для простоты, можно повторно использовать мнемонику от ключа `ibc-relayer` (Keplr -> Add Account -> Import existing account);
+- Идем в [Faucet](https://faucet.roguenet.io/) и получаем `junox`.
 
-### Uploading the test contract
+### Загрузка тестового контракта
 
-You need to know the address of the test contract in order to configure ICA and ICQ relayers properly (so that they process only the messages related to that specific contract). In order to do that:
+Вам необходимо знать адрес тестового контракта, чтобы правильно настроить ретрансляторы ICA и ICQ (чтобы они обрабатывали только сообщения, относящиеся к этому конкретному контракту). Для этого:
 
-1. Upload the contract instantiation [script](https://github.com/neutron-org/neutron-contracts/blob/neutron_audit_oak_19_09_2022_fixes/validator_test_upload_contract.sh) to your machine;
-2. Upload the test contract [artifact](https://github.com/neutron-org/neutron-contracts/raw/neutron_audit_oak_19_09_2022_fixes/artifacts/neutron_validators_test.wasm) to your machine.
+1. Загружаем [скрипт](https://github.com/neutron-org/neutron-contracts/blob/neutron_audit_oak_19_09_2022_fixes/validator_test_upload_contract.sh) инициализации контракта на сервер;
+2. Загружаем [артефакт](https://github.com/neutron-org/neutron-contracts/raw/neutron_audit_oak_19_09_2022_fixes/artifacts/neutron_validators_test.wasm) тестового контракта на сервер.
 
-After the script and the artifact are uploaded, execute the script (`NODE_URL` configures the node address; don't forget about the `tcp://` prefix!):
+После того как скрипт и артефакт загружены, выполняем скрипт (`NODE_URL` задает переменную с адресом ноды; Не забываем про `tcp://` префикс (!), в моем случае нейтрон на локале `tcp://127.0.0.1:46657`)
 
 ```
 $ NODE_URL=tcp://<your_node_host:port> bash validator_test_upload_contract.sh neutron_validators_test.wasm
-Node url: tcp://<your_node_host:port>
-Chain id: quark-1
-Enter keyring passphrase: # here you enter the new password for your freshly created keyring
-Re-enter keyring passphrase:
-Local address in neutron: <neutron_address> # This is the address that was generated for you
-Key mnemonic: <mnemonic>
-
-Please go to http://faucet.quark.ntrn.info/ and get tokens for <neutron_address> # Here you are prompted to visit the Faucet address and get some testnet $ntrn tokens
-Make sure tx is passed by going to http://explorer.quark.ntrn.info/accounts/<neutron_address>
-Hit enter when ready
-
-Upload the queries contract
-Enter keyring passphrase:
-Contract code id: 10
-
-Instantiate the contract
-Enter keyring passphrase:
-gas estimate: 195479
-Contract address: <test_contract_address>
 ```
-This script:
-* Creates a tmp address for you;
-* Prompts you to get testnet `$ntrn` tokens from the Faucet;
-* Uploads the contract code on behalf of the tmp address;
-* Instantiates the contract.
+Этот скрипт:
+* Создает адрес `tmp`;
+* Предлагает получить `$ntrn` токены из крана;
+* Загружает код контракта на адрес `tmp`;
+* Инициализирует контракт.
 
-The <test_contract_address> is saved to `./contract_address.tmp` just in case.
+В этом примере <test_contract_address> сохраняется в `./contract_address.tmp`.
+
+Ниже показан пример выполнения скрипта. Генерация адреса:
 
 ### Setting up the relayers
 
