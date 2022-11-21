@@ -68,7 +68,16 @@
 Вам необходимо знать адрес тестового контракта, чтобы правильно настроить ретрансляторы ICA и ICQ (чтобы они обрабатывали только сообщения, относящиеся к этому конкретному контракту). Для этого:
 
 1. Загружаем [скрипт](https://github.com/neutron-org/neutron-contracts/blob/neutron_audit_oak_19_09_2022_fixes/validator_test_upload_contract.sh) инициализации контракта на сервер;
+
+```
+wget https://raw.githubusercontent.com/neutron-org/neutron-contracts/neutron_audit_oak_19_09_2022_fixes/validator_test_upload_contract.sh
+```
+
 2. Загружаем [артефакт](https://github.com/neutron-org/neutron-contracts/raw/neutron_audit_oak_19_09_2022_fixes/artifacts/neutron_validators_test.wasm) тестового контракта на сервер.
+
+```
+wget https://github.com/neutron-org/neutron-contracts/raw/neutron_audit_oak_19_09_2022_fixes/artifacts/neutron_validators_test.wasm
+```
 
 После того как скрипт и артефакт загружены, выполняем скрипт (`NODE_URL` задает переменную с адресом ноды; Не забываем про `tcp://` префикс (!), в моем случае нейтрон на локале `tcp://127.0.0.1:46657`, ставим свои значения (!!))
 
