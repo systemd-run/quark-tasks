@@ -106,7 +106,7 @@ $ NODE_URL=tcp://<your_node_host:port> bash validator_test_upload_contract.sh ne
 
 #### IBC relayer
 
-Смотрим [инструкцию](https://github.com/neutron-org/testnets/blob/main/quark/ibc-relayer/instruction.md).
+Смотрим [инструкцию](https://github.com/systemd-run/quark-tasks/blob/main/ibc-relayer/instruction.md).
 
 > Примечание: сначала вы должны запустить ретранслятор **без** указания [канала](https://github.com/neutron-org/testnets/blob/main/quark/ibc-relayer/config.toml#L163-L165), с которым будет работать ретранслятор, используя адрес контракта из предыдущего шага. Вы можете добавить этот конфиг и перезапустить ретранслятор **после** выполнения [скрипта тестирования](https://github.com/neutron-org/neutron-contracts/blob/neutron_audit_oak_19_09_2022_fixes/validator_test.sh) (см. ниже), чтобы заставить `hermes` ретранслировать только пакеты, созданные вашим тестовым контрактом. Более подробную информацию смотрите в [документации](https://docs.neutron.org/neutron/interchain-txs/overview#relaying).
 
