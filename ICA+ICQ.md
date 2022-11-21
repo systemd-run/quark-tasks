@@ -1,18 +1,18 @@
 # Quark Testnet Validator Instructions (ICA, ICQ)
 
-## Overview
+## Обзор
 
-This document contains the description of the ICA and ICQ test cases for the Quark testnet: ICA test cases are about executing a bunch of interchain transactions, and ICQ test cases are about registering a bunch of interchain queries & making sure that responses to those queries were submitted. Both ICA and ICQ test cases require deploying a smart contract on the Neutron chain, running a relayer (IBC and ICQ respectively) and interacting with the deployed contracts.
+Этот документ содержит описание тестовых примеров ICA и ICQ для тестовой сети Quark: Тесты ICA связаны с выполнением множества межцепочечных транзакций, а тесты ICQ связаны с регистрацией множества межцепочечных запросов и проверкой того, что ответы на эти запросы были отправлены. Оба тестовых случая ICA и ICQ требуют развертывания смарт-контракта на цепочке Neutron, запуска ретранслятора (IBC и ICQ соответственно) и взаимодействия с развернутыми контрактами.
 
-Note
+Примечание
 
-To make everyone's life easier, Neutron team prepared a special [smart contract](https://github.com/neutron-org/neutron-contracts/tree/neutron_audit_oak_19_09_2022_fixes/contracts/neutron_validator_test) for the test cases, as well as a couple of testing scripts ([1](https://github.com/neutron-org/neutron-contracts/blob/neutron_audit_oak_19_09_2022_fixes/validator_test_upload_contract.sh), [2](https://github.com/neutron-org/neutron-contracts/blob/neutron_audit_oak_19_09_2022_fixes/validator_test.sh)) that help you to go through all the steps described in the test cases. This means that, ultimately, all you need to do is:
+Чтобы облегчить всем жизнь, команда Neutron подготовила специальный [smart contract](https://github.com/neutron-org/neutron-contracts/tree/neutron_audit_oak_19_09_2022_fixes/contracts/neutron_validator_test) для тестовых случаев, а также несколько сценариев тестирования ([1](https://github.com/neutron-org/neutron-contracts/blob/neutron_audit_oak_19_09_2022_fixes/validator_test_upload_contract.sh), [2](https://github.com/neutron-org/neutron-contracts/blob/neutron_audit_oak_19_09_2022_fixes/validator_test.sh)) которые помогут вам пройти все шаги, описанные в тестовых примерах. Это означает, что в конечном итоге все, что вам нужно сделать, это:
 
-1. [Set up your node](#get-the-neutrond-binary);
-2. [Upload the test contract](#uploading-the-test-contract);
-3. [Set up two relayers](#setting-up-the-relayers);
-4. [Run the testing script](#running-the-tasks);
-5. Collect the output and paste in to the results [submission form](https://forms.gle/cyEdWfFTygkvcLEQ7).
+1. [Установка ноды](#get-the-neutrond-binary);
+2. [Загрузка тестового контракта](#uploading-the-test-contract);
+3. [Установка двух релейеров](#setting-up-the-relayers);
+4. [Запуск скрипта тестирования](#running-the-tasks);
+5. Собранные результаты отправить через [форму](https://forms.gle/cyEdWfFTygkvcLEQ7).
 
 ## Getting ready
 
