@@ -124,23 +124,26 @@ $ NODE_URL=tcp://<your_node_host:port> bash validator_test_upload_contract.sh ne
 
 
 
-## Running the tasks
+## Выполняем задание
 
 ### Test
 
-1. Upload the [testing script](https://github.com/neutron-org/neutron-contracts/blob/neutron_audit_oak_19_09_2022_fixes/validator_test.sh) to your node,
-2. Run this script on your server (`YOUR_CONNECTION_ID` is the connection identifier (Neutron side) that you saved after running the IBC relayer): 
+1. Загружаем [скрипт тестирования](https://github.com/neutron-org/neutron-contracts/blob/neutron_audit_oak_19_09_2022_fixes/validator_test.sh) на сервер
+```
+wget https://raw.githubusercontent.com/neutron-org/neutron-contracts/neutron_audit_oak_19_09_2022_fixes/validator_test.sh
+```
+2. Запускаем скрипт (`YOUR_CONNECTION_ID` это идентификатор соединения (на стороне Neutron) который должен был сохраниться после запуска IBC релейера): 
 
 `NODE_URL=tcp://<your_node_host:port> bash validator_test.sh YOUR_CONNECTION_ID`
 
 
-3. Follow the script instructions,
-4. Collect the output and paste in to the results [submission form](https://forms.gle/cyEdWfFTygkvcLEQ7),
-5. **PLEASE DON'T FORGET TO SAVE ALL SCRIPT OUTPUT IN A SEPARATE FILE; IT MIGHT BE REQUIRED FOR DEBUGGING.**
+3. Следуем инструкциям скрипта,
+4. Собираем вывод и отправляем результаты в [форму](https://forms.gle/cyEdWfFTygkvcLEQ7),
+5. **ПОЖАЛУЙСТА, НЕ ЗАБУДЬТЕ СОХРАНИТЬ ВЕСЬ ВЫВОД СКРИПТА В ОТДЕЛЬНОМ ФАЙЛЕ; ОН МОЖЕТ ПОНАДОБИТЬСЯ ДЛЯ ОТЛАДКИ.**
 
-> NOTE: when prompted for a passphrase, use the same passphrase you used when uploading the test contract.
+> ПРИМЕЧАНИЕ: когда появится запрос на ввод парольной фразы, используйте ту же мнемонику, которую вы использовали при загрузке тестового контракта.
 
-> NOTE: if you see the message `Please send 0.02 atom to cosmosXXXXXXXXXXXX`, use the Keplr wallet to send the required amount to that address. You can check the delivery using a block explorer, e.g., https://explorer.theta-testnet.polypore.xyz/accounts/cosmos1c5gl8epk99jvz23dhnyp5et9rmm8wdq89v9hqnvt0pr74j5d2s7sjjxlp7
+> ПРИМЕЧАНИЕ: если вы видите сообщение `Пожалуйста, отправьте 0,02 atom на cosmosXXXXXXXXXXXX`, используйте кошелек Keplr для отправки необходимой суммы на этот адрес. Вы можете проверить доставку с помощью блокчейн-проводника, например, https://explorer.theta-testnet.polypore.xyz/accounts/cosmos1c5gl8epk99jvz23dhnyp5et9rmm8wdq89v9hqnvt0pr74j5d2s7sjjxlp7.
 
-In case of errors, contact the dev team on [Discord](https://discord.com/channels/986573321023942708/1030044052529352724) or [Telegram](https://t.me/neutron_community).
+В случае возникновения ошибок, свяжитесь с командой разработчиков по [Discord](https://discord.com/channels/986573321023942708/1030044052529352724) или [Telegram](https://t.me/neutron_community).
 
