@@ -1,4 +1,4 @@
-# Quark Testnet Validator Instructions (ICA, ICQ)
+# Инструкции валидатора Quark Testnet (ICA, ICQ)
 
 ## Обзор
 
@@ -14,30 +14,31 @@
 4. [Запуск скрипта тестирования](#running-the-tasks);
 5. Собранные результаты отправить через [форму](https://forms.gle/cyEdWfFTygkvcLEQ7).
 
-## Getting ready
+## Подготовка
 
-None of the testing scripts sets up the IBC and ICQ relayers. You will need to set up both the IBC and the ICQ relayers prior to executing the scripts. In order to do that, you need to have some testnet tokens both on Neutron and on the target chain of your choice (we have instructions for Cosmos hub and Juno).
+Ни один из сценариев тестирования не устанавливает ретрансляторы IBC и ICQ. Вам необходимо настроить IBC и ICQ ретрансляторы перед выполнением скриптов. Для этого вам нужно иметь несколько токенов testnet как на Neutron, так и на целевой сети по вашему выбору (у нас есть инструкции для Cosmos hub и Juno).
 
-### Get the `neutrond` binary
+### Получаем бинарник `neutrond`
 
-See the [instructions](https://github.com/neutron-org/testnets/blob/main/quark/README.md#node-installation), or download a binary from the [releases](https://github.com/neutron-org/neutron/releases/latest) page.
+Смотрите [инструкции](https://github.com/neutron-org/testnets/blob/main/quark/README.md#node-installation), или загрузите бинарник со страницы [releases](https://github.com/neutron-org/neutron/releases/latest).
 
-### Generate the relayers' address on Neutron and get testnet `$ntrn` tokens
+### Генерируем адреса релейеров на Neutron и получаем тестовые `$ntrn` токены
 
-Neutron testnet tokens are required for the operation of the IBC and ICQ relayers. **You will specify the addresses used in this section in [Hermes](#ibc-relayer) and [ICQ Relayer](#icq-relayer-setup) configuration as the address on the Neutron chain.**
+Токены Neutron testnet необходимы для работы релейеров IBC и ICQ. 
 
-1. Generate keys with following commands:
+**Адреса, сгенерированные в этом разделе будут использованы в конфигурации [Hermes](#ibc-relayer) и [ICQ Relayer](#icq-relayer-setup) в качестве адреса на чейне Neutron.**
 
+1. Генерируем ключи с помощью следующих команд:
 `neutrond keys add ibc-relayer`
 
-`neutrond keys add icq-relayer`
+    `neutrond keys add icq-relayer`
 
-and save the mnemonics;
+    и сохраняем мнемоники;
 
-2. Go to the [Faucet](http://faucet.quark.ntrn.info/) and get tokens for the addresses you generated on previous step;
-3. Make sure tx is passed at the Neutron testnet explorer: http://explorer.quark.ntrn.info/accounts/<your_relayer_address>.
+2. Идем в [Faucet](http://faucet.quark.ntrn.info/) и получаем токены на сгенерированные выше адреса;
+3. Убеждаемся что транза прошла на Neutron testnet explorer: http://explorer.quark.ntrn.info/accounts/<your_relayer_address>.
 
-### Getting testnet tokens on target chain
+### Получаем тестовые токены на целевом чейне
 
 Testnet tokens are required for the operation of the IBC relayer. **You will specify the address used in this section in [Hermes](#ibc-relayer) configuration as the address on the target chain of your choice.**
 
