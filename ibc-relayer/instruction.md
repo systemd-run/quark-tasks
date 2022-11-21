@@ -49,6 +49,9 @@ WantedBy=multi-user.target
 
 Копируем пример [конфига](https://github.com/neutron-org/testnets/blob/main/quark/ibc-relayer/config.toml) в `~/.hermes/config.toml` **и заполняем недостающие параметры.**
 
+`wget https://raw.githubusercontent.com/neutron-org/testnets/main/quark/ibc-relayer/config.toml -o ~/.hermes/config.toml`
+
+
 > Не забудьте йопд, заполнить недостающие параметры (отмечены комментариями TODO).
 
 > От себя добавлю, в конфиге необходимо вписать три параметра, коротко об них: 
