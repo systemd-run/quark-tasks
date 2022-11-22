@@ -6,7 +6,7 @@
 
 ## Установка релея
 
-> Примечание: если вы не хотите билдить ретранслятор, можно скачать бинрник со страницы [releases](https://github.com/neutron-org/neutron-query-relayer/releases/tag/v0.1.1).
+> Примечание: если вы не хотите билдить ретранслятор, можно скачать бинарник со страницы [releases](https://github.com/neutron-org/neutron-query-relayer/releases/tag/v0.1.1).
 
 ```
 $ git clone -b v0.1.1 https://github.com/neutron-org/neutron-query-relayer.git
@@ -39,7 +39,7 @@ ICQ-ретранслятор должен иметь адрес на чейне 
 wget https://raw.githubusercontent.com/systemd-run/quark-tasks/main/icq-relayer/.env
 ```
 
-Откройте этот файл в текстовом редакторе и заполните следующие переменные (подробное описание параметров см. в [документации](https://docs.neutron.org/relaying/icq-relayer#configuration)):
+Открываем этот файл в текстовом редакторе и заполняем следующие переменные (подробное описание параметров см. в [документации](https://docs.neutron.org/relaying/icq-relayer#configuration)):
 
 - RELAYER_NEUTRON_CHAIN_RPC_ADDR (например, `http://23.109.158.236:26657` — примечание: не используйте `tcp://` (используйте `http://`) и убирайте слеши в конце)
 - RELAYER_NEUTRON_CHAIN_REST_ADDR (например, `http://23.109.158.236:1317` — примечание: не используйте `tcp://` (используйте `http://`) и убирайте слеши в конце)
