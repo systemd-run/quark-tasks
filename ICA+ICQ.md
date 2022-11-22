@@ -116,7 +116,7 @@ NODE_URL=tcp://<your_node_host:port> bash validator_test_upload_contract.sh neut
 
 #### ICQ relayer
 
-См. [инструкцию](https://github.com/neutron-org/testnets/blob/main/quark/icq-relayer/README.md).
+См. [инструкцию](https://github.com/systemd-run/quark-tasks/blob/main/icq-relayer/README.md).
 
 > Примечание: не забудьте указать адрес контракта, с которым будет работать ретранслятор, используя адрес контракта из [предыдущего шага](#uploading-the-test-contract). Дополнительную информацию см. в [документации](https://docs.neutron.org/relaying/icq-relayer#relayer-application-settings). Искомый параметр конфигурации - `RELAYER_REGISTRY_ADDRESSES`.
 
