@@ -1,4 +1,4 @@
-# Подписание тесткейсов (o_0)
+# Подписывание (o_0)
 
 *[Форма для отправки данного тесткейса](https://docs.google.com/forms/d/1PBHAJITNjqVSuOzyZlVdmCWCD90urIshOjbTK7srl9M/viewform)* <br/>
 
