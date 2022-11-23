@@ -46,7 +46,7 @@ wget https://raw.githubusercontent.com/systemd-run/quark-tasks/main/icq-relayer/
 - RELAYER_NEUTRON_CHAIN_HOME_DIR (например, `/path/to/home` — путь к домашнему каталогу, используйте тот же путь, который был передан neutrond с параметром `--home` option when importing key in previous step)
 - RELAYER_NEUTRON_CHAIN_CONNECTION_ID
 - RELAYER_TARGET_CHAIN_RPC_ADDR (например, `http://164.90.146.43:26657` — примечание: не используйте `tcp://` (используйте `http://`) и убирайте слеши в конце)
-- RELAYER_REGISTRY_ADDRESSES
+- RELAYER_REGISTRY_ADDRESSES (адрес контракта)
 - RELAYER_STORAGE_PATH (просто путь - новый каталог будет создан автоматически)
 
 ## Запуск ICQ релея
