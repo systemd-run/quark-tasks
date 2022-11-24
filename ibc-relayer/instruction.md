@@ -22,10 +22,10 @@ curl -L "https://github.com/informalsystems/ibc-rs/releases/download/v1.0.0/herm
 ## 2. Добавляем пользователя
 
 ```
-$ sudo useradd -m ibc-cosmoshub-rly
-$ sudo su ibc-cosmoshub-rly
-$ cd ~/
-$ mkdir ~/.hermes
+$ sudo useradd -m ibc-cosmoshub-rly # добавляем пользователя ibc-cosmoshub-rly, под ним будет ехать гермес
+$ sudo su ibc-cosmoshub-rly # логинимся в юзера
+$ cd ~/ # домой
+$ mkdir ~/.hermes 
 $ exit # выходим в учетку рута
 ```
 
@@ -50,7 +50,10 @@ WantedBy=multi-user.target
 
 Копируем пример [конфига](https://github.com/neutron-org/testnets/blob/main/quark/ibc-relayer/config.toml) в `~/.hermes/config.toml` **и заполняем недостающие параметры.**
 
-`wget https://raw.githubusercontent.com/neutron-org/testnets/main/quark/ibc-relayer/config.toml -o ~/.hermes/config.toml`
+```
+cd /home/ibc-cosmoshub-rly/.hermes/
+wget https://raw.githubusercontent.com/neutron-org/testnets/main/quark/ibc-relayer/config.toml
+```
 
 
 > Не забудьте йопд, заполнить недостающие параметры (отмечены комментариями TODO).
