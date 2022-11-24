@@ -26,6 +26,7 @@ $ sudo useradd -m ibc-cosmoshub-rly
 $ sudo su ibc-cosmoshub-rly
 $ cd ~/
 $ mkdir ~/.hermes
+$ exit # выходим в учетку рута
 ```
 
 ## 3. Создаем сервис
