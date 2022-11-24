@@ -58,7 +58,7 @@ WantedBy=multi-user.target
  
     `RPC` смотрим в `config.toml`, строка 86 > блок RPC Server Configuration Options, *657-й порт
     `GRPC` смотрим в `app.toml`, строка 156 > блок gRPC Configuration, порт *9090
-    `websocket` выглядит как `ws://[rpc_addr]/websocket`, хз пока что это значит
+    `websocket` выглядит как `ws://[rpc_addr]/websocket`, хз пока что это значит (upd похоже что так: если RPC http://127.0.0.1:26657 то websocket = http://127.0.0.1:26657/websocket)
 
 ПРИМЕЧАНИЕ: `websocket_addr` должен начинаться с протокола ws|wss
 
